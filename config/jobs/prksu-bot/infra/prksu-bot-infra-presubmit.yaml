@@ -1,0 +1,14 @@
+presubmits:
+  prksu-bot/infra:
+  - name: pull-infra-checkconfig
+    always_run: true
+    decorate: true
+    spec:
+      containers:
+      - image: gcr.io/k8s-prow/checkconfig:v20191002-7780df2a1
+        command:
+        - /checkconfig
+        args:
+        - --config-path=config/prow/config.yaml
+        - --job-config-path=config/jobs
+        - --plugin-config=config/prow/plugins.yaml

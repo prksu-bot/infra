@@ -1,0 +1,53 @@
+welcome:
+- message_template: "Welcome @{{.AuthorLogin}}! It looks like this is your first PR to {{.Org}}/{{.Repo}} :tada:"
+config_updater:
+  maps:
+    config/prow/config.yaml:
+      name: config
+    config/prow/plugins.yaml:
+      name: plugins
+size:
+  s:   10
+  m:   30
+  l:   100
+  xl:  500
+  xxl: 1000
+sigmention: {}
+slack: {}
+blunderbuss: {}
+cat: {}
+cherry_pick_unapproved: {}
+retitle:
+  allow_closed_issues: true
+triggers:
+- repos:
+  - prksu-bot/infra
+approve:
+- repos:
+  - prksu-bot/infra
+  require_self_approval: true
+external_plugins: {}
+plugins:
+  prksu-bot/infra:
+  - approve
+  - assign
+  - blunderbuss
+  - cat
+  - config-updater
+  - dog
+  - golint
+  - help
+  - hold
+  - label
+  - lifecycle
+  - override
+  - pony
+  - retitle
+  - shrug
+  - size
+  - skip
+  - trigger
+  - verify-owners
+  - welcome
+  - wip
+  - yuks

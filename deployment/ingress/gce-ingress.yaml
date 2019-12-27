@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  namespace: prow
+  name: prow-ingress
+  annotations:
+    kubernetes.io/ingress.class: "gce"
+    kubernetes.io/ingress.global-static-ip-name: "prow-ingress"
+    kubernetes.io/tls-acme: "true"
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    acme.cert-manager.io/http01-edit-in-place: "true"
+spec:
+  tls:
+  - secretName: prow-tls
+    hosts:
+    - prow.prksu.tech
+  rules:
+  - host: prow.prksu.tech
+    http:
+      paths:
+      - path: /hook
+        backend:
+          serviceName: hook
+          servicePort: 8888

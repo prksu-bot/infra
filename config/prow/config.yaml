@@ -1,0 +1,18 @@
+prowjob_namespace: prow
+pod_namespace: prow-jobs
+log_level: debug
+tide:
+  context_options:
+    from-branch-protection: true
+    required-if-present-contexts: null
+    skip-unknown-contexts: false
+  queries:
+  - repos:
+    - prksu-bot/infra
+    labels:
+    - approved
+    missingLabels:
+    - do-not-merge
+    - do-not-merge/hold
+    - do-not-merge/work-in-progress
+    - do-not-merge/invalid-owners-file
