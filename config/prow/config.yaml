@@ -16,3 +16,23 @@ tide:
     - do-not-merge/hold
     - do-not-merge/work-in-progress
     - do-not-merge/invalid-owners-file
+  - repos:
+    - fossildev/ghost-operator
+    labels:
+    - approved
+    missingLabels:
+    - do-not-merge
+    - do-not-merge/hold
+    - do-not-merge/work-in-progress
+    - do-not-merge/invalid-owners-file
+branch-protection:
+  orgs:
+    fossildev:
+      repos:
+        ghost-operator:
+          protect: true
+          required_status_checks:
+            contexts:
+            - operator-build
+            - operator-unit-test
+            - operator-e2e-test

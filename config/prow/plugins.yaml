@@ -22,10 +22,18 @@ retitle:
 triggers:
 - repos:
   - prksu-bot/infra
+- repos:
+  - fossildev/ghost-operator
+  trusted_org: fossildev
+  only_org_members: true
 approve:
 - repos:
   - prksu-bot/infra
   require_self_approval: true
+- repos:
+  - fossildev/ghost-operator
+  require_self_approval: true
+  lgtm_acts_as_approve: true
 external_plugins: {}
 plugins:
   prksu-bot/infra:
@@ -34,6 +42,28 @@ plugins:
   - blunderbuss
   - cat
   - config-updater
+  - dog
+  - golint
+  - help
+  - hold
+  - label
+  - lifecycle
+  - override
+  - pony
+  - retitle
+  - shrug
+  - size
+  - skip
+  - trigger
+  - verify-owners
+  - welcome
+  - wip
+  - yuks
+  fossildev/ghost-operator:
+  - approve
+  - assign
+  - blunderbuss
+  - cat
   - dog
   - golint
   - help
